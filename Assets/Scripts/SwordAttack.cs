@@ -9,7 +9,7 @@ public class SwordAttack : MonoBehaviour
 
     // public AttackDirection attackDirection;
 
-    public float damage = 3;
+    public float damage = 1;
 
     Vector2 rightAttackOffset;
 
@@ -48,7 +48,8 @@ public class SwordAttack : MonoBehaviour
 
             if (enemy != null) 
             {
-                enemy.Health -= damage;
+                
+                enemy.Hit(1);
             }
         }
     }
