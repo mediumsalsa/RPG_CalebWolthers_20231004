@@ -162,6 +162,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae47b430191923e46b81c6a10f2b5858, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  speed: 1
   playerController: {fileID: 0}
   health: 1
 --- !u!95 &7910402568252003070

@@ -12,6 +12,13 @@ public class Enemy : MonoBehaviour
 {
 
 
+    public GameObject player;
+
+    public float speed;
+
+    private float distance;
+
+
     public PlayerController playerController;
 
     Animator animator;
@@ -32,6 +39,25 @@ public class Enemy : MonoBehaviour
         {
             return health;
         }
+    }
+
+
+    void Update()
+    {
+        distance = Vector2.Distance(transform.position, player.transform.position);
+        Vector2 direction = player.transform.position - transform.position;
+
+
+        if (distance < 1)
+        {
+            stateChase();
+        }
+
+    }
+
+    public void stateChase()
+    {
+        transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime);
     }
 
     public void UpdatePlayerCount(int newCount)
