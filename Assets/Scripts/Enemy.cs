@@ -96,19 +96,20 @@ public class Enemy : MonoBehaviour
         if (health <= 0)
         {
             Defeated();
-            UpdatePlayerCount(1);
+            
         }
     }
 
     public void Defeated()
     {
         animator.SetTrigger("Defeated");
-
+        
     }
 
     public void RemoveEnemy()
     {
         Destroy(gameObject);
+        UpdatePlayerCount(1);
     }
 
 
