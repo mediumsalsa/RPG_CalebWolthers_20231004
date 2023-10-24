@@ -47,17 +47,28 @@ public class Enemy : MonoBehaviour
         distance = Vector2.Distance(transform.position, player.transform.position);
         Vector2 direction = player.transform.position - transform.position;
 
+        transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime);
 
-        if (distance < 1)
+        float currentSpeed = 1;
+
+
+        if (distance < 1.5)
         {
-            stateChase();
+            setSpeed(1);
+
+
         }
+        else if (distance > 3)
+        {
+            setSpeed(0);
+        }
+
 
     }
 
-    public void stateChase()
+    public void setSpeed(float fspeed)
     {
-        transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime);
+        speed = fspeed;
     }
 
     public void UpdatePlayerCount(int newCount)
