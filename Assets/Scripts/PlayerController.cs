@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
         }
     }*/
 
+    public float health = 3f;
 
     public float moveSpeed = 700f;
 
@@ -44,9 +45,13 @@ public class PlayerController : MonoBehaviour
 
     bool canMove = true;
 
+    bool dead = false;
+
     public TextMeshProUGUI countText;
 
     public int count;
+
+
 
 
 
@@ -76,7 +81,23 @@ public class PlayerController : MonoBehaviour
     }
 
 
+    public void Hit(int damage)
+    {
 
+        health -= damage;
+
+        if (health <= 0)
+        {
+            Defeated();
+
+        }
+    }
+
+    public void Defeated()
+    {
+        countText.text = "You've been defeated. Please use pause menu to retry!";
+        Time.timeScale = 0;
+    }
 
     void SetCountText()
     {
@@ -133,43 +154,47 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
 
-
-        if (canMove)
+        if (dead == false)
         {
 
-            if (movementInput != Vector2.zero)
+            if (canMove)
             {
-                bool success = TryMove(movementInput);
 
-                if (!success)
+                if (movementInput != Vector2.zero)
                 {
-                    success = TryMove(new Vector2(movementInput.x, 0));
+                    bool success = TryMove(movementInput);
+
+                    if (!success)
+                    {
+                        success = TryMove(new Vector2(movementInput.x, 0));
+                    }
+
+                    if (!success)
+                    {
+                        success = TryMove(new Vector2(0, movementInput.y));
+                    }
+
+
+
+                    animator.SetBool("isMoving", success);
+
+                }
+                else
+                {
+                    animator.SetBool("isMoving", false);
                 }
 
-                if (!success)
+                if (movementInput.x < 0)
                 {
-                    success = TryMove(new Vector2(0, movementInput.y));
+                    spriteRenderer.flipX = true;
+                }
+                else if (movementInput.x > 0)
+                {
+                    spriteRenderer.flipX = false;
                 }
 
 
-
-                animator.SetBool("isMoving", success);
-
             }
-            else
-            {
-                animator.SetBool("isMoving", false);
-            }
-
-            if (movementInput.x < 0)
-            {
-                spriteRenderer.flipX = true;
-            }
-            else if (movementInput.x > 0)
-            {
-                spriteRenderer.flipX = false;
-            }
-
 
         }
 

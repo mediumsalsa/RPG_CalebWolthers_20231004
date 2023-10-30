@@ -119537,6 +119537,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6944567670517391758, guid: 970fa9e5dbe456147954a240212e5547, type: 3}
+      propertyPath: health
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6944567670517391758, guid: 970fa9e5dbe456147954a240212e5547, type: 3}
       propertyPath: countText
       value: 
       objectReference: {fileID: 1321993771}

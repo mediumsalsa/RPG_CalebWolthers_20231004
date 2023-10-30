@@ -18,6 +18,9 @@ public class Enemy : MonoBehaviour
 
     private float distance;
 
+    public float collisionOffset = 0.05f;
+
+    List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
 
     public PlayerController playerController;
 
@@ -65,6 +68,21 @@ public class Enemy : MonoBehaviour
 
 
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Player")
+        {
+            PlayerController player = other.GetComponent<PlayerController>();
+
+            if (player != null)
+            {
+
+                player.Hit(1);
+            }
+        }
+    }
+
 
     public void setSpeed(float fspeed)
     {
