@@ -28,6 +28,8 @@ public class Enemy : MonoBehaviour
 
     public float health = 3;
 
+    bool dyeing = false;
+
     public float Health
     {
         set 
@@ -71,16 +73,23 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Player")
+
+        if (dyeing == false)
         {
-            PlayerController player = other.GetComponent<PlayerController>();
 
-            if (player != null)
+            if (other.tag == "Player")
             {
+                PlayerController player = other.GetComponent<PlayerController>();
 
-                player.Hit(1);
+                if (player != null)
+                {
+
+                    player.Hit(1);
+                }
             }
+
         }
+   
     }
 
 
@@ -120,6 +129,8 @@ public class Enemy : MonoBehaviour
 
     public void Defeated()
     {
+        dyeing = true;
+
         animator.SetTrigger("Defeated");
         
     }
