@@ -95,8 +95,12 @@ public class PlayerController : MonoBehaviour
 
     public void Defeated()
     {
+        animator.SetBool("isMoving", false);
+        dead = true;
+        LockMovement();
+        animator.SetTrigger("dead");
         countText.text = "You've been defeated. Please use pause menu to retry!";
-        Time.timeScale = 0;
+        //Time.timeScale = 0;
     }
 
     void SetCountText()
@@ -175,9 +179,10 @@ public class PlayerController : MonoBehaviour
                     }
 
 
-
-                    animator.SetBool("isMoving", success);
-
+                    if (dead == false)
+                    { 
+                        animator.SetBool("isMoving", success);
+                    }
                 }
                 else
                 {
@@ -202,29 +207,34 @@ public class PlayerController : MonoBehaviour
 
      private bool TryMove(Vector2 direction)
      {
-         if (direction != Vector2.zero)
-         {
-             int count = rb.Cast(
-                 direction,
-                 movementFilter,
-                 castCollisions,
-                 moveSpeed * Time.fixedDeltaTime + collisionOffset);
+        if (dead == false)
+        {
+
+            if (direction != Vector2.zero)
+            {
+                int count = rb.Cast(
+                    direction,
+                    movementFilter,
+                    castCollisions,
+                    moveSpeed * Time.fixedDeltaTime + collisionOffset);
 
 
-             if (count == 0)
-             {
-                 rb.MovePosition(rb.position + direction * moveSpeed * Time.fixedDeltaTime);
-                 return true;
-             }
-             else
-             {
-                 return false;
-             }
-         } else
-         {
-             return false;
-         }
-
+                if (count == 0)
+                {
+                    rb.MovePosition(rb.position + direction * moveSpeed * Time.fixedDeltaTime);
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+        return true;
      }
 
 
@@ -236,23 +246,28 @@ public class PlayerController : MonoBehaviour
 
     void OnFire()
     {
-        animator.SetTrigger("swordAttack");
-        canMove = false;
+        if (dead == false)
+        {
+            animator.SetTrigger("swordAttack");
+            canMove = false;
+        }
     }
 
     public void SwordAttack()
     {
-        LockMovement();
 
-        if (spriteRenderer.flipX == true)
-        {
-            swordAttack.AttackLeft();
-        }
+            LockMovement();
 
-        else
-        {
-            swordAttack.AttackRight();
-        }
+            if (spriteRenderer.flipX == true)
+            {
+                swordAttack.AttackLeft();
+            }
+
+            else
+            {
+                swordAttack.AttackRight();
+            }
+        
 
     }
 
@@ -270,7 +285,10 @@ public class PlayerController : MonoBehaviour
 
     public void UnlockMovement()
     {
-        canMove = true;
+        if (dead == false)
+        {
+            canMove = true;
+        }
     }
 
 

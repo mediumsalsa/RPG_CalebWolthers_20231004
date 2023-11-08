@@ -54,7 +54,7 @@ public class Enemy : MonoBehaviour
 
         transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime);
 
-        float currentSpeed = 1;
+        //float currentSpeed = 1;
 
 
         if (distance < 1.5)
@@ -85,12 +85,41 @@ public class Enemy : MonoBehaviour
                 {
 
                     player.Hit(1);
+                    if (player.health <= 0)
+                    {
+                        print("Player dead");
+                        setSpeed(-1);
+                    }
                 }
+
             }
 
         }
    
     }
+
+    public void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.CompareTag("Collision"))
+        {
+            print("Collision");
+            setSpeed(0);
+        }
+
+    }
+
+    public void OnCollisionExit2D(Collision2D col)
+    {
+        if (col.gameObject.CompareTag("Collision"))
+        {
+            print("Collision Ended");
+            setSpeed(1);
+        }
+    }
+
+
+
+
 
 
     public void setSpeed(float fspeed)
