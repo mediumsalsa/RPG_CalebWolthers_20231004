@@ -18,6 +18,10 @@ public class Enemy : MonoBehaviour
 
     private float distance;
 
+    public float tooFar;
+
+    public float canSee;
+
     public float collisionOffset = 0.05f;
 
     List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
@@ -57,13 +61,13 @@ public class Enemy : MonoBehaviour
         //float currentSpeed = 1;
 
 
-        if (distance < 1.5)
+        if (distance < canSee)
         {
             setSpeed(1);
 
 
         }
-        else if (distance > 3)
+        else if (distance > tooFar)
         {
             setSpeed(0);
         }
@@ -88,7 +92,7 @@ public class Enemy : MonoBehaviour
                     if (player.health <= 0)
                     {
                         print("Player dead");
-                        setSpeed(-1);
+                        
                     }
                 }
 
@@ -100,7 +104,7 @@ public class Enemy : MonoBehaviour
 
     public void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.gameObject.CompareTag("Collision"))
+        if (col.gameObject.name == "CollisionObjects")
         {
             print("Collision");
             setSpeed(0);
@@ -110,7 +114,7 @@ public class Enemy : MonoBehaviour
 
     public void OnCollisionExit2D(Collision2D col)
     {
-        if (col.gameObject.CompareTag("Collision"))
+        if (col.gameObject.name == "CollisionObjects")
         {
             print("Collision Ended");
             setSpeed(1);
@@ -130,6 +134,12 @@ public class Enemy : MonoBehaviour
     public void UpdatePlayerCount(int newCount)
     {
         playerController.UpdateCount(newCount);
+        if (playerController.count == 12)
+        {
+            animator.SetTrigger("Defeated");
+            Destroy(gameObject);
+        }
+
     }
 
     private void Start()

@@ -47,6 +47,8 @@ public class PlayerController : MonoBehaviour
 
     bool dead = false;
 
+    bool win = false;
+
     public TextMeshProUGUI countText;
 
     public int count;
@@ -95,12 +97,17 @@ public class PlayerController : MonoBehaviour
 
     public void Defeated()
     {
-        animator.SetBool("isMoving", false);
-        dead = true;
-        LockMovement();
-        animator.SetTrigger("dead");
-        countText.text = "You've been defeated. Please use pause menu to retry!";
-        //Time.timeScale = 0;
+        if (win == false)
+        {
+
+            animator.SetBool("isMoving", false);
+            dead = true;
+            LockMovement();
+            animator.SetTrigger("dead");
+            countText.text = "You've been defeated. Please use pause menu to retry!";
+            //Time.timeScale = 0;
+
+        }
     }
 
     void SetCountText()
@@ -110,6 +117,8 @@ public class PlayerController : MonoBehaviour
 
         if (count == 12)
         {
+            win = true;
+
             countText.text = "All Slime Destroyed. Mission Accomplished";
         }
     }
