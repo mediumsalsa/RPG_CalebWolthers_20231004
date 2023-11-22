@@ -163,6 +163,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  speedConst: 1
   speed: 0
   tooFar: 3
   canSee: 1.5

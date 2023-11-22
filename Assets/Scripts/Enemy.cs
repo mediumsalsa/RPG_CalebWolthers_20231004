@@ -14,6 +14,8 @@ public class Enemy : MonoBehaviour
 
     public GameObject player;
 
+    public float speedConst;
+
     public float speed;
 
     private float distance;
@@ -63,13 +65,12 @@ public class Enemy : MonoBehaviour
 
         if (distance < canSee)
         {
-            setSpeed(1);
-
+            speed = speedConst;
 
         }
         else if (distance > tooFar)
         {
-            setSpeed(0);
+            speed = 0;
         }
 
 
@@ -117,7 +118,7 @@ public class Enemy : MonoBehaviour
         if (col.gameObject.name == "CollisionObjects")
         {
             print("Collision Ended");
-            setSpeed(1);
+            setSpeed(2);
         }
     }
 
