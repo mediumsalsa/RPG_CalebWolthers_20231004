@@ -51,7 +51,13 @@ public class PlayerController : MonoBehaviour
 
     public TextMeshProUGUI countText;
 
+    public TextMeshProUGUI healthText;
+
     public int count;
+
+    public float hitCooldown;
+
+    bool canHit = true;
 
 
 
@@ -70,9 +76,14 @@ public class PlayerController : MonoBehaviour
 
         spriteRenderer = GetComponent<SpriteRenderer>();
 
+
+
         count = 0;
 
         SetCountText();
+
+        SetHealthText();
+
     }
 
     public void UpdateCount(int newCount)
@@ -83,16 +94,30 @@ public class PlayerController : MonoBehaviour
     }
 
 
+    IEnumerator CoolDownFunction()
+    {
+        canHit = false;
+        yield return new WaitForSeconds(hitCooldown);
+        canHit = true;
+    }
+
     public void Hit(int damage)
     {
-
-        health -= damage;
-
-        if (health <= 0)
+        if (canHit == true)
         {
-            Defeated();
 
+            health -= damage;
+            SetHealthText();
+
+            if (health <= 0)
+            {
+                Defeated();
+                healthText.text = "Player Dead...";
+
+            }
+            StartCoroutine(CoolDownFunction());
         }
+        
     }
 
     public void Defeated()
@@ -120,6 +145,18 @@ public class PlayerController : MonoBehaviour
             win = true;
 
             countText.text = "All Slime Destroyed. Mission Accomplished";
+        }
+    }
+
+
+    void SetHealthText()
+    {
+
+        healthText.text = "Health: " + health.ToString();
+
+        if (health <= 0)
+        {
+            healthText.text = "Player Dead...";
         }
     }
 
