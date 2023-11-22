@@ -98,24 +98,33 @@ public class PlayerController : MonoBehaviour
     {
         canHit = false;
         yield return new WaitForSeconds(hitCooldown);
+        spriteRenderer.color = new Color(1, 1, 1, 1);
+        moveSpeed -= 0.5f;
         canHit = true;
     }
 
     public void Hit(int damage)
     {
-        if (canHit == true)
+        if (win == false)
         {
 
-            health -= damage;
-            SetHealthText();
-
-            if (health <= 0)
+            if (canHit == true)
             {
-                Defeated();
-                healthText.text = "Player Dead...";
+
+                health -= damage;
+                spriteRenderer.color = new Color(1, 0, 0, 1);
+                moveSpeed += 0.5f;
+                SetHealthText();
+
+                if (health <= 0)
+                {
+                    Defeated();
+                    healthText.text = "Player Dead...";
+
+                }
+                StartCoroutine(CoolDownFunction());
 
             }
-            StartCoroutine(CoolDownFunction());
         }
         
     }
