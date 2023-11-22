@@ -103,25 +103,7 @@ public class Enemy : MonoBehaviour
    
     }
 
-    public void OnCollisionEnter2D(Collision2D col)
-    {
-        if (col.gameObject.name == "CollisionObjects")
-        {
-            print("Collision");
-            setSpeed(0);
-        }
-
-    }
-
-    public void OnCollisionExit2D(Collision2D col)
-    {
-        if (col.gameObject.name == "CollisionObjects")
-        {
-            print("Collision Ended");
-            setSpeed(2);
-        }
-    }
-
+ 
 
 
 

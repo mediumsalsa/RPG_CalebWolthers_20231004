@@ -16455,6 +16455,18 @@ PrefabInstance:
       value: -0.043575287
       objectReference: {fileID: 0}
     - target: {fileID: 5512944674707650464, guid: b6175366f8e2dc043bc9c0477208d3dc, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5512944674707650464, guid: b6175366f8e2dc043bc9c0477208d3dc, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5512944674707650464, guid: b6175366f8e2dc043bc9c0477208d3dc, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5512944674707650464, guid: b6175366f8e2dc043bc9c0477208d3dc, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.251
       objectReference: {fileID: 0}
@@ -16494,6 +16506,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6679107356115906677, guid: b6175366f8e2dc043bc9c0477208d3dc, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8018267987507550792, guid: b6175366f8e2dc043bc9c0477208d3dc, type: 3}
       propertyPath: speed
       value: 0
@@ -16504,7 +16520,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8018267987507550792, guid: b6175366f8e2dc043bc9c0477208d3dc, type: 3}
       propertyPath: health
-      value: 1000
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8018267987507550792, guid: b6175366f8e2dc043bc9c0477208d3dc, type: 3}
       propertyPath: player
@@ -16516,7 +16532,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8018267987507550792, guid: b6175366f8e2dc043bc9c0477208d3dc, type: 3}
       propertyPath: speedConst
-      value: 1.25
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 8018267987507550792, guid: b6175366f8e2dc043bc9c0477208d3dc, type: 3}
       propertyPath: playerController
