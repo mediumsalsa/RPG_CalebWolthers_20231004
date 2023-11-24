@@ -6,6 +6,18 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
 
+    private void Update()
+    {
+        if (Input.GetKeyDown("escape"))
+        {
+
+            Application.Quit();
+
+        }
+    }
+
+
+
     [SerializeField] GameObject pauseMenu;
 
 

@@ -5,7 +5,17 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
- 
+
+    private void Update()
+    {
+        if (Input.GetKeyDown("escape"))
+        {
+
+            Application.Quit();
+
+        }
+    }
+
     public void PlayGame()
     {
         SceneManager.LoadSceneAsync(1);

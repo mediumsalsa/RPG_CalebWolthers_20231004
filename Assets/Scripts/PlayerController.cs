@@ -86,11 +86,23 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    void Update()
+    {
+        if (Input.GetKeyDown("escape"))
+        {
+
+            Application.Quit();
+
+        }
+    }
+
     public void UpdateCount(int newCount)
     {
         count += newCount;
 
         SetCountText();
+
+
     }
 
 
