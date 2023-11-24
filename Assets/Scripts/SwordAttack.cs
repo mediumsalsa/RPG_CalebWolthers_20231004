@@ -49,7 +49,7 @@ public class SwordAttack : MonoBehaviour
             if (enemy != null) 
             {
                 
-                enemy.Hit(1);
+                enemy.Hit(3);
             }
         }
     }

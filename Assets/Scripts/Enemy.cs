@@ -160,6 +160,7 @@ public class Enemy : MonoBehaviour
     public void RemoveEnemy()
     {
         Destroy(gameObject);
+        print("slime dead");
         UpdatePlayerCount(1);
     }
 

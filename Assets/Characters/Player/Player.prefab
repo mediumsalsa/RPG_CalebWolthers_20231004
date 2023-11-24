@@ -297,7 +297,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Actions: {fileID: 0}
+  m_Actions: {fileID: -944628639613478452, guid: 27112c8d467137a41aabd9213b72f172, type: 3}
   m_NotificationBehavior: 0
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
@@ -312,7 +312,7 @@ MonoBehaviour:
   m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: 
+  m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!114 &6944567670517391758
@@ -348,7 +348,9 @@ MonoBehaviour:
   swordAttack: {fileID: 3961986063795167715}
   idleFriction: 0.9
   countText: {fileID: 6186973514710477700}
+  healthText: {fileID: 0}
   count: 0
+  hitCooldown: 0
 --- !u!50 &2695690660511354213
 Rigidbody2D:
   serializedVersion: 4
