@@ -26,9 +26,13 @@ public class Enemy : MonoBehaviour
 
     public float collisionOffset = 0.05f;
 
+    public ContactFilter2D movementFilter;
+
     List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
 
     public PlayerController playerController;
+
+    Rigidbody2D rb;
 
     Animator animator;
 
@@ -53,8 +57,17 @@ public class Enemy : MonoBehaviour
     }
 
 
+
+    void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+
+        animator = GetComponent<Animator>();
+    }
+
     void Update()
     {
+
         distance = Vector2.Distance(transform.position, player.transform.position);
         Vector2 direction = player.transform.position - transform.position;
 
@@ -103,7 +116,6 @@ public class Enemy : MonoBehaviour
    
     }
 
- 
 
 
 
@@ -119,17 +131,13 @@ public class Enemy : MonoBehaviour
         playerController.UpdateCount(newCount);
         if (playerController.count == 12)
         {
-            animator.SetTrigger("Defeated");
+            //animator.SetTrigger("Defeated");
             Destroy(gameObject);
         }
 
     }
 
-    private void Start()
-    {
-        animator = GetComponent<Animator>();
 
-    }
 
     public void backToIdle()
     {

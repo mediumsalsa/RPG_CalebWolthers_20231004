@@ -183,44 +183,6 @@ public class PlayerController : MonoBehaviour
 
 
 
-    /* void FixedUpdate()
-     {
-         if (canMove == true && movementInput != Vector2.zero)
-         {
-             rb.velocity = Vector2.ClampMagnitude(rb.velocity + (movementInput * moveSpeed * Time.deltaTime), maxSpeed);
-
-             if (movementInput.x > 0)
-             {
-                 spriteRenderer.flipX = false;
-             }
-             else if (movementInput.x < 0)
-             {
-                 spriteRenderer.flipX = true;
-             }
-
-             IsMoving = true;
-
-
-         }
-         else
-         {
-             rb.velocity = Vector2.Lerp(rb.velocity, Vector2.zero, idleFriction);
-
-             IsMoving = false;
-         }
-
-         UpdateAnimatorParameter();
-
-     }
-
-     void UpdateAnimatorParameter()
-     {
-         animator.SetBool("isMoving", isMoving);
-     }*/
-
-
-
-
     // Update is called once per frame
     private void FixedUpdate()
     {

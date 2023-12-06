@@ -48,7 +48,7 @@ public class SwordAttack : MonoBehaviour
 
             if (enemy != null) 
             {
-                
+                print("Enemy Hit");
                 enemy.Hit(3);
             }
         }
