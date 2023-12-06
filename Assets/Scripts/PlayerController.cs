@@ -57,6 +57,8 @@ public class PlayerController : MonoBehaviour
 
     public float hitCooldown;
 
+    float speedCooldown = 1;
+
     bool canHit = true;
 
 
@@ -106,6 +108,22 @@ public class PlayerController : MonoBehaviour
     }
 
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Speed"))
+        {
+            moveSpeed += 1;
+            StartCoroutine(SpeedCoolDown());
+        }
+    }
+
+    IEnumerator SpeedCoolDown()
+    {
+        yield return new WaitForSeconds(speedCooldown);
+        moveSpeed -= 1;
+    }
+
+
     IEnumerator CoolDownFunction()
     {
         canHit = false;
@@ -114,6 +132,8 @@ public class PlayerController : MonoBehaviour
         moveSpeed -= 0.5f;
         canHit = true;
     }
+
+
 
     public void Hit(int damage)
     {
