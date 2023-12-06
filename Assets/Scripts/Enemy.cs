@@ -129,7 +129,7 @@ public class Enemy : MonoBehaviour
     public void UpdatePlayerCount(int newCount)
     {
         playerController.UpdateCount(newCount);
-        if (playerController.count == 12)
+        if (playerController.count == 26)
         {
             //animator.SetTrigger("Defeated");
             Destroy(gameObject);
