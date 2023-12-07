@@ -115,7 +115,15 @@ public class PlayerController : MonoBehaviour
             moveSpeed += 1;
             StartCoroutine(SpeedCoolDown());
         }
+        else if (collision.CompareTag("Heart"))
+        {
+            health += 1;
+            SetHealthText();
+        }
     }
+
+
+
 
     IEnumerator SpeedCoolDown()
     {
