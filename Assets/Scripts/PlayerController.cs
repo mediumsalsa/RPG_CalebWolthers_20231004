@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("isMoving", isMoving);
         }
     }*/
+    [Header("Player Settings")]
 
     public float health = 3f;
 
@@ -49,15 +50,21 @@ public class PlayerController : MonoBehaviour
 
     bool win = false;
 
+    [Header("Text Settings")]
+
     public TextMeshProUGUI countText;
 
     public TextMeshProUGUI healthText;
 
     public int count;
 
+    [Header("Cooldown Settings")]
+
     public float hitCooldown;
 
-    float speedCooldown = 1;
+    public float powerUpCoolDown = 5;
+
+    public float speedCooldown = 1;
 
     bool canHit = true;
 
@@ -120,6 +127,12 @@ public class PlayerController : MonoBehaviour
             health += 1;
             SetHealthText();
         }
+        else if (collision.CompareTag("PowerUp"))
+        {
+            canHit = false;
+            spriteRenderer.color = new Color(0, 0, 1, 1);
+            StartCoroutine(PowerUpCoolDown());
+        }
     }
 
 
@@ -129,6 +142,13 @@ public class PlayerController : MonoBehaviour
     {
         yield return new WaitForSeconds(speedCooldown);
         moveSpeed -= 1;
+    }
+
+    IEnumerator PowerUpCoolDown()
+    {
+        yield return new WaitForSeconds(powerUpCoolDown);
+        spriteRenderer.color = new Color(1, 1, 1, 1); 
+        canHit = true;
     }
 
 

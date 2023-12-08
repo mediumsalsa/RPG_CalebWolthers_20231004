@@ -8,6 +8,7 @@ TagManager:
   - Collision
   - Speed
   - Heart
+  - PowerUp
   layers:
   - Default
   - TransparentFX
